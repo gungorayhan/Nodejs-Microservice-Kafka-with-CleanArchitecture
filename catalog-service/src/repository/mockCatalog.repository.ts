@@ -3,7 +3,7 @@ import { Product } from "../models/product.model";
 
 
 export class MockCatalogRepository implements ICatalogRepository{
-    async create(data: Product): Promise<Product> {
+     create(data: Product): Promise<Product> {
         const mockProdcut = {
             id:123,
             ...data
@@ -11,17 +11,16 @@ export class MockCatalogRepository implements ICatalogRepository{
 
         return Promise.resolve(mockProdcut);
     }
-    update(data: Product): Promise<{}> {
-        throw new Error("Method not implemented.");
+    update(data: Product): Promise<Product> {
+       return Promise.resolve(data as unknown as Product);
     }
-    delete(id: any): void {
-        throw new Error("Method not implemented.");
+    delete(id: any) {
+        return Promise.resolve(id)
     }
-    find(): Promise<Product[]> {
-        throw new Error("Method not implemented.");
+    find(limit:number,offset:number): Promise<Product[]> {
+       return Promise.resolve([])
     }
     findOne(id: number): Promise<Product> {
-        throw new Error("Method not implemented.");
+        return Promise.resolve({id} as unknown as Product)
     }
-
 }
