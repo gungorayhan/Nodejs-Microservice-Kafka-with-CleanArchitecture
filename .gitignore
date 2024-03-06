@@ -1,2 +1,3 @@
 catalog-service/node_modules/
 order-service/node_modules/
+db/db-data
