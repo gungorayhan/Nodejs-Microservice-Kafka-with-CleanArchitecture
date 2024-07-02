@@ -3,6 +3,7 @@ import { ICatalogRepository } from "../interface/catalogRepository.interface";
 import { Product } from "../models/product.model";
 import { ProductFactory } from "../utils/fixtures";
 import { off } from "process";
+import { NotFoundError } from "../utils";
 
 
 export class CatalogRepository implements ICatalogRepository {
@@ -50,7 +51,7 @@ export class CatalogRepository implements ICatalogRepository {
         if(product){
             return Promise.resolve(product)
         }
-        throw new Error("product not found")
+        throw new NotFoundError("product not found")
     }
 
 }
